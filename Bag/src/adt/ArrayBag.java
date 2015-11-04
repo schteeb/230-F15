@@ -10,8 +10,8 @@ public class ArrayBag<T> implements BagInterface<T> {
 	private static final int DEFAULT_CAPACITY = 10;
 	
 	public ArrayBag() {
-		bag = (T[]) new Object[DEFAULT_CAPACITY];
-		//this(DEFAULT_CAPACITY);
+		//bag = (T[]) new Object[DEFAULT_CAPACITY];
+		this(DEFAULT_CAPACITY);
 	}
 	
 	public ArrayBag(int capacity) {
