@@ -2,7 +2,10 @@ package submission;
 
 public class Palindrome {
 	public static boolean isPalindrome(String s) {
-		// TODO use a stack to determine if s is palindrome
-		return false;
+		if(s.length() == 0 || s.length() == 1)
+            return true; 
+        if(s.charAt(0) == s.charAt(s.length()-1))
+        return isPalindrome(s.substring(1, s.length()-1));
+        return false;	
 	}
 }
