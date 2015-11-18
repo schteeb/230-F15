@@ -1,5 +1,7 @@
 package submission;
 
+import java.util.NoSuchElementException;
+
 import adt.Queue;
 
 public class ArrayQueue<T> implements Queue<T> {
@@ -8,31 +10,40 @@ public class ArrayQueue<T> implements Queue<T> {
 	
 	@Override
 	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		tail = (tail + 1) % data.length;
+		data[tail] = newEntry;
 	}
 
 	@Override
 	public T dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty())
+			throw new NoSuchElementException();
+		else
+		{
+			T front = data[head];
+			data[head] = null;
+			head = (head + 1) %data.length;
+			return front;
+		}
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty())
+			throw new NoSuchElementException();
+		else
+			return data[head];
+
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return head == 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		head = -1;
 		
 	}
 	

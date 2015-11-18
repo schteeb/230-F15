@@ -1,5 +1,7 @@
 package submission;
 
+import java.util.NoSuchElementException;
+
 import adt.Queue;
 
 public class LinkedQueue<T> implements Queue<T> {
@@ -7,31 +9,42 @@ public class LinkedQueue<T> implements Queue<T> {
 	
 	@Override
 	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
+		Node newNode = new Node(newEntry, null);
+		if (isEmpty())
+			head = newNode;
+		else
+			tail.setNextNode(newNode);
+		tail = newNode;
 		
 	}
 
 	@Override
 	public T dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+		T front = peek();
+		assert head !=null;
+		head.setData(null);
+		head = head.getNextNode();
+		if (head == null)
+			tail = null;
+		return front;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty())
+			throw new NoSuchElementException();
+		else
+			return head.getData();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return head == null;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		head = null;
 		
 	}
 	
@@ -53,10 +66,25 @@ public class LinkedQueue<T> implements Queue<T> {
 			this(dataPortion, null);	
 		} // end constructor
 		
+		public void setData(T d) {
+			data = d;
+		}
+
+		public Node getNextNode() {
+			return next;
+		}
+
+		public T getData() {
+			return data;
+		} //end constructor
+
 		private Node(T dataPortion, Node nextNode)
 		{
 			data = dataPortion;
 			next = nextNode;	
+		} // end constructor
+		private void setNextNode(Node nextNode){
+			next = nextNode;
 		} // end constructor
 	} // end Node
 
