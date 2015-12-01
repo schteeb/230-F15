@@ -5,7 +5,7 @@ public class RecursiveInsertionSorter {
 		return sort(unsorted, unsorted.length); // Don't touch
 	}
 
-	public static int[] sort(int[] unsorted, int endIndex) {
+	private static int[] sort(int[] unsorted, int endIndex) {
 		// TODO implement recursive insertion sort
 		return null;
 	}
