@@ -6,7 +6,8 @@ public class RecursiveInsertionSorter {
 	}
 
 	private static int[] sort(int[] unsorted, int endIndex) {
-		// TODO implement recursive insertion sort
+		// TODO implement recursive insertion sort where
+		// endIndex is the index of the last unsorted element
 		return null;
 	}
 }
