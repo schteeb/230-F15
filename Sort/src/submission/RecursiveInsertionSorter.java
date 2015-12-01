@@ -2,10 +2,10 @@ package submission;
 
 public class RecursiveInsertionSorter {
 	public static int[] sort(int[] unsorted) {
-		return sort(unsorted, 0); // Don't touch
+		return sort(unsorted, unsorted.length); // Don't touch
 	}
 
-	public static int[] sort(int[] unsorted, int index) {
+	public static int[] sort(int[] unsorted, int endIndex) {
 		// TODO implement recursive insertion sort
 		return null;
 	}
