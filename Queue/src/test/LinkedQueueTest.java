@@ -8,7 +8,7 @@ import adt.Queue;
 import submission.*;
 
 public class LinkedQueueTest {
-	private Queue<String> queue = new MyLinkedQueue<String>();
+	private Queue<String> queue = new LinkedQueue<String>();
 	private static int MAX_CAPACITY = 100;
 
 	@Test

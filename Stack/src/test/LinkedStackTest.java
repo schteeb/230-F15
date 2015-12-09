@@ -8,7 +8,7 @@ import adt.Stack;
 import submission.*;
 
 public class LinkedStackTest {
-	private Stack<String> stack = new MyLinkedStack<String>();
+	private Stack<String> stack = new LinkedStack<String>();
 	private static int MAX_CAPACITY = 100;
 
 	@Test
