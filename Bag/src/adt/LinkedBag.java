@@ -69,14 +69,27 @@ public class LinkedBag<T> implements BagInterface<T>{
 
 	@Override
 	public int getFrequencyOf(T anEntry) {
-		// TODO Auto-generated method stub
+		int frequency = 0;
+		int count = 0;
+		Node currentNode = head;
+		while((count<numEntries) && (currentNode!=null)){
+			count++;
+			currentNode = currentNode.next;
+		}
 		return 0;
 	}
 
 	@Override
 	public boolean contains(T anEntry) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean found = false;
+		Node currentNode = head;
+		while (!found && (currentNode!=null)){
+			if (anEntry.equals(currentNode.data))
+				found = true;
+			else
+				currentNode = currentNode.next;
+		}
+		return found;
 	}
 
 	@Override

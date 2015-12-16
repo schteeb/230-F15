@@ -1,8 +1,5 @@
 package adt;
-
 import java.util.Arrays;
-
-
 public class ArrayBag<T> implements BagInterface<T> {
 
 	private T[] bag;
@@ -12,39 +9,31 @@ public class ArrayBag<T> implements BagInterface<T> {
 	public ArrayBag() {
 		//bag = (T[]) new Object[DEFAULT_CAPACITY];
 		this(DEFAULT_CAPACITY);
-	}
-	
+	}	
+	@SuppressWarnings("unchecked")
 	public ArrayBag(int capacity) {
 		bag = (T[]) new Object[capacity];
 	}
-	
 	@Override
 	public int getCurrentSize() {
 		return numEntries;
 	}
-
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return numEntries==0;
 	}
-
 	@Override
-	public boolean add(T newEntry) {
-		
+	public boolean add(T newEntry) {	
 		if (!isArrayFull()) {
 			bag[numEntries] = newEntry;
 			numEntries++;
 			return true;
-		}
-		
+		}	
 		return false;
 	}
-
 	private boolean isArrayFull() {
 		return numEntries >= bag.length;
 	}
-
 	@Override
 	public T remove() {
 		numEntries--; // numEntries -= 1 OR numEntries = numEntries - 1
@@ -52,7 +41,6 @@ public class ArrayBag<T> implements BagInterface<T> {
 		bag[numEntries] = null;
 		return temp;
 	}
-
 	@Override
 	public boolean remove(T anEntry) {
 		// loop through the bag
@@ -68,25 +56,33 @@ public class ArrayBag<T> implements BagInterface<T> {
 		}
 		return false;
 	}
-
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		while (!isEmpty())
+			remove();
 	}
-
 	@Override
 	public int getFrequencyOf(T anEntry) {
-		// TODO Auto-generated method stub
-		return 0;
+		int counter = 0;
+		for (int index = 0; index < numEntries; index++) {
+			if (anEntry.equals(bag[index])) {
+				counter ++;
+			}
+		}
+		return counter;
 	}
-
 	@Override
 	public boolean contains(T anEntry) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean found = false;
+		int index = 0;
+		while (!found&&(index<numEntries)) {
+			if (anEntry.equals(bag[index])){
+				found = true;
+			}
+			index ++;
+		}
+		return found;
 	}
-
 	@Override
 	public T[] toArray() {
 		//T[] r = new T[numEntries]; // Java won't let us do this
@@ -97,14 +93,12 @@ public class ArrayBag<T> implements BagInterface<T> {
 		//return (T[]) bag.clone(); // throws null pointer exception when called in for each
 		return Arrays.copyOf(bag, numEntries);
 	}
-	
 	public String toString() {
 		String s = "";
 		for (T item : this.toArray())
 			s += item.toString() + " ";
 		return s;
 	}
-	
 	// Client to test our implementation
 	public static void main(String[] args) {
 		BagInterface<String> b = new ArrayBag<String>();
